@@ -1,0 +1,8 @@
+##############################################################################
+# This is a template base makefile.
+# Place a copy named "Makefile" in the root of the project, change the project
+# name and update the relative path "BUILD_SYSTEM" if required
+##############################################################################
+PROJECT := change_me
+BUILD_SYSTEM := build/core    # Relative link to the makefiles
+include $(BUILD_SYSTEM)/main.mk
