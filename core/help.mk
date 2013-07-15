@@ -10,12 +10,11 @@ help:
 	@echo
 	@echo "Helpers:"
 	@echo "----------------------------------------------------------------------------"
-	@echo "help                    You're reading it right now"
+	@echo "help                    You're reading it now"
 	@echo "nothing                 Check all the make files. Don't do anything though"
-	@echo "showcommands            Use as a secondary make target."
+	@echo "showcommands            Secondary make target to show all commands called"
 	@echo "                            E.g. make all showcommands"
-	@echo "                        Will display all shell commands during make"
 	@echo
-	@echo "Project make targets:"
+	@echo "Targets found for $(PROJECT):"
 	@echo "----------------------------------------------------------------------------"
-	$(call print-vars,ALL_MODULES)
+	@echo "$(ALL_MODULES)"

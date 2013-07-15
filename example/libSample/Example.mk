@@ -3,27 +3,23 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-$(info ##############)
-$(info # Project.mk #)
-$(info ##############)
-
 #############################################################
 #
 #
 
-#LOCAL_CFLAGS +=
+#LOCAL_CFLAGS :=
 
 LOCAL_SRC_FILES:= \
-	main.cpp
+	libSample.cpp
 
 #LOCAL_SHARED_LIBRARIES :=
 
 #LOCAL_STATIC_LIBRARIES :=
 
-#LOCAL_C_INCLUDES +=
+#LOCAL_C_INCLUDES :=
 
-#LOCAL_LDLIBS +=
+#LOCAL_LDLIBS :=
 
-LOCAL_MODULE:= main
+LOCAL_MODULE:= libSample
 
-include $(BUILD_EXECUTABLE)
+include $(BUILD_SHARED_LIBRARY)

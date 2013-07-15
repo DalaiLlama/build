@@ -18,7 +18,7 @@ default: help
 include $(BUILD_SYSTEM)/setup.mk
 
 # These targets don't build anything
-SKIP_COMMAND_GOALS := help clean
+SKIP_COMMAND_GOALS := clean
 
 ifeq ($(filter $(MAKECMDGOALS),$(SKIP_COMMAND_GOALS)),)
 $(call print-setup-info)

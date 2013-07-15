@@ -1,10 +1,13 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "libSample.h"
+
 using namespace std;
 
 int main() {
-	cout << "Hello World" << endl;
-	system("PAUSE");
-	return 0;
+    const char* str = hello();
+    cout << str << endl;
+    system("PAUSE");
+    return 0;
 }

@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include "libSample.h"
 
-int main(){
-
-printf("Hello World");
-return 0;
+const char* hello()
+{
+    return "Hello world";
 }
+
