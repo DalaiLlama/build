@@ -19,7 +19,7 @@ for smaller c/c++ projects
 
 1. `$ mkdir <project root>` *// Root for all your projects*
 2. `$ cd <project root>`
-3. `$ git init <url>` *// Get this project*
+3. `$ git clone https://github.com/DalaiLlama/build.git` *// Get this project*
 4. `$ cp build/Makefile.template Makefile`
 5. Update the Makefile with the project name (This is used to find the
    *<project>.mk* files later)
@@ -27,7 +27,8 @@ for smaller c/c++ projects
 7. Check [the examples](example/) for sample code on how to build
    [executables](example/binSample/executables/),
    [libraries](example/libSample/),
-   [static libraries](example/libStaticSample/) and [tests](example/tests/).
+   [static libraries](example/libStaticSample/) and
+   [tests](example/binSample/tests/).
 
 
 # Description #
@@ -45,6 +46,7 @@ Walk through what happens when you 'make'
     + Dependency list
     + Linking: e.g. o => exe
     + Stripping
+* What binaries are built and where they go.
 
 Notable points:
 * Knowing when files have been modified
@@ -53,7 +55,7 @@ Notable points:
 # Issues #
 * When building within cyginw, use the mingw binaries. Problems with
 [statically linking against cygwin1.dll](http://stackoverflow.com/questions/340696/can-you-statically-compile-a-cygwin-application).
-Need to check with with using the `-mno-cygwin` flag.
+Need to check the `-mno-cygwin` flag.
 
 
 # TODO #
