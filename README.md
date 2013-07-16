@@ -25,9 +25,9 @@ for smaller c/c++ projects
    `<project>.mk` files later)
 6. `mkdir <new project>`
 7. Check the [examples](example/) for sample code on how to build
-   [executables](example/binSample/executables/),
-   [shared libraries](example/libShared/),
-   [static libraries](example/libStatic/) and
+   [executables](example/binSample/),
+   [shared libraries](example/libSharedSample/),
+   [static libraries](example/libStaticSample/) and
    [tests](example/binSample/tests/).
 
 
