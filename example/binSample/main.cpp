@@ -1,13 +1,13 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "libSample.h"
+#include "libShared.h"
+#include "libStatic.h"
 
 using namespace std;
 
 int main() {
-    const char* str = hello();
-    cout << str << endl;
+    cout << hello() << world() << endl;
     system("PAUSE");
     return 0;
 }

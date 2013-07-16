@@ -3,27 +3,29 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-#############################################################
-#
+###############################
+# sample
 #
 
-#DEBUG_MODULE_$(strip $(LOCAL_MODULE)) := true
+LOCAL_MODULE:= sample
 
 LOCAL_SRC_FILES:= \
     main.cpp
 
 LOCAL_C_INCLUDES := \
-    libSample/
+    libSharedSample/ \
+    libStaticSample/
 
 LOCAL_SHARED_LIBRARIES := \
-    libSample
+    libShared
 
-LOCAL_STATIC_LIBRARIES :=
+LOCAL_STATIC_LIBRARIES := \
+    libStatic
 
-LOCAL_LDLIBS :=
+#LOCAL_LDLIBS :=
 
-LOCAL_CFLAGS :=
+#LOCAL_CFLAGS :=
 
-LOCAL_MODULE:= sample
+#DEBUG_MODULE_$(strip $(LOCAL_MODULE)) := true
 
 include $(BUILD_EXECUTABLE)

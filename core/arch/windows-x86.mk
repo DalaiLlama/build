@@ -36,7 +36,7 @@ endif
 #TARGET_GLOBAL_CFLAGS += -include $(call select-android-config-h,windows)
 
 #TARGET_GLOBAL_LDFLAGS += --enable-stdcall-fixup
-TARGET_GLOBAL_LDFLAGS += -static
+#TARGET_GLOBAL_LDFLAGS += -static
 
 # when building under Cygwin, ensure that we use Mingw compilation by default.
 # you can disable this (i.e. to generate Cygwin executables) by defining the

@@ -229,10 +229,10 @@ endif
 # ###############################################################
 # Build system internal files
 # ###############################################################
-CLEAR_VARS:= $(BUILD_SYSTEM)/clear_vars.mk
-BUILD_EXECUTABLE:= $(BUILD_SYSTEM)/executable.mk
-BUILD_SHARED_LIBRARY:= $(BUILD_SYSTEM)/shared_library.mk
-BUILD_STATIC_LIBRARY:= $(BUILD_SYSTEM)/static_library.mk
+CLEAR_VARS := $(BUILD_SYSTEM)/clear_vars.mk
+BUILD_EXECUTABLE := $(BUILD_SYSTEM)/executable.mk
+BUILD_SHARED_LIBRARY := $(BUILD_SYSTEM)/shared_library.mk
+BUILD_STATIC_LIBRARY := $(BUILD_SYSTEM)/static_library.mk
 
 
 # TODO Enable and check
