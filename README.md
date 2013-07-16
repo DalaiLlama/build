@@ -22,12 +22,12 @@ for smaller c/c++ projects
 3. `$ git clone https://github.com/DalaiLlama/build.git` *// Get this project*
 4. `$ cp build/Makefile.template Makefile`
 5. Update the Makefile with the project name (This is used to find the
-   *<project>.mk* files later)
+   `<project>.mk` files later)
 6. `mkdir <new project>`
-7. Check [the examples](example/) for sample code on how to build
+7. Check the [examples](example/) for sample code on how to build
    [executables](example/binSample/executables/),
-   [libraries](example/libSample/),
-   [static libraries](example/libStaticSample/) and
+   [shared libraries](example/libShared/),
+   [static libraries](example/libStatic/) and
    [tests](example/binSample/tests/).
 
 
