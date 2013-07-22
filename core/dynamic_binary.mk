@@ -22,7 +22,6 @@ ifeq ($(LOCAL_UNSTRIPPED_PATH),)
   endif
 endif
 
-
 # The name of the target file, without any path prepended.
 # TODO: This duplicates logic from base_rules.mk because we need to
 #       know its results before base_rules.mk is included.

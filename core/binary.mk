@@ -212,7 +212,6 @@ ALL_GENERATED_SOURCES += $(LOCAL_GENERATED_SOURCES)
 # we also do this on host modules, even though
 # it's not really arm, because there are files that are shared.
 cpp_arm_sources    := $(patsubst %$(LOCAL_CPP_EXTENSION).arm,%$(LOCAL_CPP_EXTENSION),$(filter %$(LOCAL_CPP_EXTENSION).arm,$(LOCAL_SRC_FILES)))
-cpp_arm_objects    := $(addprefix $(intermediates)/,$(cpp_arm_sources:$(LOCAL_CPP_EXTENSION)=.o))
 
 # TODO Remove arm sources
 cpp_normal_sources := $(filter %$(LOCAL_CPP_EXTENSION),$(LOCAL_SRC_FILES))
@@ -230,16 +229,7 @@ $(cpp_objects): $(intermediates)/%.o: \
     $(TOPDIR)$(LOCAL_PATH)/%$(LOCAL_CPP_EXTENSION) \
     $(yacc_cpps) $(proto_generated_headers) $(my_compiler_dependencies) \
     $(LOCAL_ADDITIONAL_DEPENDENCIES)
-	@echo ::::::::::::::::::::::::: C++: Compile %.cpp files to %.o START ::::::::::::::::::::::::
-	$(call print-vars,PRIVATE_C_INCLUDES)
-	$(call print-vars,PRIVATE_NO_DEFAULT_COMPILER_FLAGS)
-	$(call print-vars,PRIVATE_TARGET_PROJECT_INCLUDES)
-	$(call print-vars,PRIVATE_TARGET_C_INCLUDES)
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_CFLAGS)
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_CPPFLAGS)
-	$(call print-vars,PRIVATE_ARM_CFLAGS)
 	$(transform-cpp-to-o-mod)
-	@echo :::::::::::::::::::::::::: C++: Compile %.cpp files to %.o END :::::::::::::::::::::::::
 -include $(cpp_objects:%.o=%.P)
 endif
 
@@ -382,18 +372,16 @@ import_includes_deps := $(strip \
       $(call intermediates-dir-for,SHARED_LIBRARIES,$(l),$(LOCAL_IS_HOST_MODULE))/export_includes) \
     $(foreach l, $(LOCAL_STATIC_LIBRARIES) $(LOCAL_WHOLE_STATIC_LIBRARIES), \
       $(call intermediates-dir-for,STATIC_LIBRARIES,$(l),$(LOCAL_IS_HOST_MODULE))/export_includes))
+
+import_includes_deps :=
 $(import_includes) : $(import_includes_deps)
-	@echo ::::::::::::::::::::::::::::::::: Import includes START ::::::::::::::::::::::::::::::::
-	@echo Import includes file: $@
 	$(hide) mkdir -p $(dir $@) && rm -f $@
 ifdef import_includes_deps
 	$(hide) for f in $^; do \
 	  cat $$f >> $@; \
 	done
-	@echo :::::::::::::::::::::::::::::::::: Import includes END :::::::::::::::::::::::::::::::::
 else
 	$(hide) touch $@
-	@echo :::::::::::::::::::::::::::::::::: Import includes END :::::::::::::::::::::::::::::::::
 endif
 
 
@@ -523,17 +511,13 @@ $(LOCAL_INSTALLED_MODULE): | $(installed_static_library_notice_file_targets)
 export_includes := $(intermediates)/export_includes
 $(export_includes): PRIVATE_EXPORT_C_INCLUDE_DIRS := $(LOCAL_EXPORT_C_INCLUDE_DIRS)
 $(export_includes) : $(LOCAL_MODULE_MAKEFILE)
-	@echo ::::::::::::::::::::::::::::::::: Export includes START ::::::::::::::::::::::::::::::::
-	@echo Export includes file: $< -- $@
 	$(hide) mkdir -p $(dir $@) && rm -f $@
 ifdef LOCAL_EXPORT_C_INCLUDE_DIRS
 	$(hide) for d in $(PRIVATE_EXPORT_C_INCLUDE_DIRS); do \
 	        echo "-I $$d" >> $@; \
 	        done
-	@echo :::::::::::::::::::::::::::::::::: Export includes END :::::::::::::::::::::::::::::::::
 else
 	$(hide) touch $@
-	@echo :::::::::::::::::::::::::::::::::: Export includes END :::::::::::::::::::::::::::::::::
 endif
 
 # Make sure export_includes gets generated when you are running mm/mmm

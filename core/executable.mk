@@ -45,32 +45,8 @@ $(linked_module): PRIVATE_TARGET_CRTEND_O := $(my_target_crtend_o)
 
 ifeq ($(LOCAL_FORCE_STATIC_EXECUTABLE),true)
 $(linked_module): $(my_target_crtbegin_static_o) $(all_objects) $(all_libraries) $(my_target_crtend_o)
-	@echo :::::::::::::::::::::::::: transform-o-to-static-executable START ::::::::::::::::::::::
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_LDFLAGS)
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_LD_DIRS)
-	$(call print-vars,TARGET_OUT_INTERMEDIATE_LIBRARIES)
-	$(call print-vars,PRIVATE_LDFLAGS)
-	$(call print-vars,PRIVATE_ALL_OBJECTS)
-	$(call print-vars,PRIVATE_ALL_WHOLE_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_GROUP_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_ALL_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_ALL_SHARED_LIBRARIES)
-	$(call print-vars,PRIVATE_LDLIBS)
 	$(transform-o-to-static-executable)
-	@echo ::::::::::::::::::::::::::: transform-o-to-static-executable END :::::::::::::::::::::::
 else
 $(linked_module): $(my_target_crtbegin_dynamic_o) $(all_objects) $(all_libraries) $(my_target_crtend_o)
-	@echo ::::::::::::::::::::::::::::: transform-o-to-executable START ::::::::::::::::::::::::::
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_LDFLAGS)
-	$(call print-vars,PRIVATE_TARGET_GLOBAL_LD_DIRS)
-	$(call print-vars,TARGET_OUT_INTERMEDIATE_LIBRARIES)
-	$(call print-vars,PRIVATE_LDFLAGS)
-	$(call print-vars,PRIVATE_ALL_OBJECTS)
-	$(call print-vars,PRIVATE_ALL_WHOLE_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_GROUP_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_ALL_STATIC_LIBRARIES)
-	$(call print-vars,PRIVATE_ALL_SHARED_LIBRARIES)
-	$(call print-vars,PRIVATE_LDLIBS)
 	$(transform-o-to-executable)
-	@echo :::::::::::::::::::::::::::::: transform-o-to-executable END :::::::::::::::::::::::::::
 endif

@@ -36,7 +36,9 @@ endif
 #TARGET_GLOBAL_CFLAGS += -include $(call select-android-config-h,windows)
 
 #TARGET_GLOBAL_LDFLAGS += --enable-stdcall-fixup
-#TARGET_GLOBAL_LDFLAGS += -static
+TARGET_GLOBAL_LDFLAGS += \
+    -static-libgcc \
+    -static-libstdc++
 
 # when building under Cygwin, ensure that we use Mingw compilation by default.
 # you can disable this (i.e. to generate Cygwin executables) by defining the
@@ -52,6 +54,12 @@ ifeq ($(strip $(USE_CYGWIN)),)
 TARGET_GLOBAL_CFLAGS += -mno-cygwin
 TARGET_GLOBAL_LDFLAGS += -mno-cygwin -mconsole
 endif
+endif
+
+ifneq ($(findstring MINGW,$(UNAME)),)
+mingw_root := /c/MinGW/msys/1.0/local/include
+TARGET_C_INCLUDES += \
+	$(mingw_root)
 endif
 
 
